@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Deadline;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\Date;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Deadline>
@@ -16,7 +18,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DeadlineRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(
+        ManagerRegistry $registry,
+        private EntityManagerInterface $em
+    )
     {
         parent::__construct($registry, Deadline::class);
     }
@@ -38,6 +43,26 @@ class DeadlineRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+
+    public function findNextDeadlines() {
+
+        // Semaine + 1
+        $today = strtotime(date('Y-m-d'));
+        $nextWeek = strtotime("+7 days", $today);
+
+        // Get Vendredi ?
+
+        $conn = $this->em->getConnection();
+        $sql = "SELECT *
+                FROM deadline
+                WHERE due_date <= $nextWeek 
+                AND is_done = false 
+                ";
+        $stmt = $conn->executeQuery($sql);
+        return $stmt->fetchAllAssociative();
+    }
+
 
 //    /**
 //     * @return Deadline[] Returns an array of Deadline objects
