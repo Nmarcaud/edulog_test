@@ -25,5 +25,5 @@
 6. Ecrire un fichier readme.md à la racine du projet qui explique comment l’installer et appeler l’API ✅ 
 
 ## Retours
-Je n'ai malheuresment pas réussi tous les poitns de ce test dans le temps imparti. En tant normal, j'utilise API Platform et les Filters sur les entités pour ensuite filtrer mes résultats depuis le front. Je ne pense pas que c'est ce qu'il fallait faire ici, alors j'ai tenté de réaliser ces filtres en back. C'était assez intéressant... mais je ne connais pas encore suffisement bien API Platform pour obtenir quelque chaose de satisfaisant rapidemnt.
+Je n'ai malheuresment pas réussi tous les points de ce test dans le temps imparti. En tant normal, j'utilise API Platform et les Filters sur les entités pour ensuite filtrer mes résultats depuis le front. Je ne pense pas que c'est ce qu'il fallait faire ici, alors j'ai tenté de réaliser ces filtres en back. C'était assez intéressant... mais je ne connais pas encore suffisement bien API Platform pour obtenir quelque chose de satisfaisant rapidement.
 PS : L'histoire du vendredi de la semaine prochaine va me hanter quelques jours... 👻
